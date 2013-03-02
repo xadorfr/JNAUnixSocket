@@ -1,6 +1,9 @@
 package fr.labri.unixsocket;
 
 import java.nio.ByteBuffer;
+import java.util.ArrayList;
+import java.util.List;
+
 import com.sun.jna.Library;
 import com.sun.jna.Structure;
 
@@ -17,6 +20,13 @@ interface JNAUnixSocket extends Library {
 			System.arraycopy(sunPath.getBytes(), 0, this.path, 0, sunPath
 					.length());
 			System.arraycopy(ZERO_BYTE, 0, this.path, sunPath.length(), 1);
+		}
+
+		@SuppressWarnings("rawtypes")
+		@Override
+		protected List getFieldOrder() {
+			//FIXME
+			return new ArrayList();
 		}
 	}
 
